@@ -23,12 +23,22 @@ using namespace std;
 		}									\
 	} while(0)
 
-#define BUFLEN		256	// dimensiunea maxima a calupului de date
+#define BUFLEN		1552	// dimensiunea maxima a calupului de date
 #define MAX_CLIENTS	5	// numarul maxim de clienti in asteptare
 
 struct subscriber {
 	bool connected;
+	bool SF;
 	string name;
+	bool operator==(const subscriber &other) {
+		return name == other.name;
+	}
+};
+
+struct messageFormat {
+	char topic[50];
+	unsigned char type;
+	char content[1500];
 };
 
 #endif
